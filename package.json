@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.28.2",
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
     "autoprefixer": "10.4.15",
