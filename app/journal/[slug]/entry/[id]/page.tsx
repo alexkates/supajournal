@@ -6,9 +6,8 @@ export default function Page({
   params: { slug: string; id: string };
 }) {
   return (
-    <div>
-      My Journal: {params.slug} entry: {params.id}
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <JournalEntryEditor />
-    </div>
+    </main>
   );
 }
