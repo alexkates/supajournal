@@ -2,13 +2,14 @@ import { Database } from "@/supabase/types";
 import { createServerActionClient, createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import Link from "next/link";
 
 export default async function Page() {
   const supabase = createServerComponentClient<Database>({
     cookies,
   });
 
-  const { data, error } = await supabase.from("journal").select("*");
+  const { data: journals, error } = await supabase.from("journal").select("*");
 
   const addJournal = async (formData: FormData) => {
     "use server";
@@ -32,7 +33,12 @@ export default async function Page() {
     <main>
       <h1>Journals</h1>
       <p>{error?.message}</p>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {journals?.map((journal) => (
+        <div key={journal.id}>
+          <Link href={`/journal/${journal.id}`}>{journal.name}</Link>
+          <p>{journal.description}</p>
+        </div>
+      ))}
 
       <form action={addJournal}>
         <input name="name" placeholder="name" />
