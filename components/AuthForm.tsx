@@ -1,8 +1,11 @@
 "use client";
+
 import { Auth } from "@supabase/auth-ui-react";
-import { ThemeMinimal } from "@supabase/auth-ui-shared";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/supabase/types";
+import { ThemeMinimal } from "@supabase/auth-ui-shared";
+
+const defaultUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
 
 export default function AuthForm() {
   const supabase = createClientComponentClient<Database>();
@@ -10,11 +13,13 @@ export default function AuthForm() {
   return (
     <Auth
       supabaseClient={supabase}
-      view="magic_link"
-      appearance={{ theme: ThemeMinimal }}
+      view="sign_up"
+      appearance={{
+        theme: ThemeMinimal,
+      }}
       showLinks={true}
       providers={[]}
-      redirectTo="http://localhost:3000/auth/callback"
+      redirectTo={`${defaultUrl}/auth/callback`}
     />
   );
 }
