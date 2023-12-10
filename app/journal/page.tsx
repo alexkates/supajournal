@@ -11,7 +11,7 @@ export default async function Page() {
 
   const { data: journals, error } = await supabase.from("journal").select("*");
 
-  const addJournal = async (formData: FormData) => {
+  async function addJournal(formData: FormData) {
     "use server";
 
     const supabase = createServerActionClient({ cookies });
@@ -27,7 +27,7 @@ export default async function Page() {
     await supabase.from("journal").insert({ name, description, user_id });
 
     revalidatePath("/");
-  };
+  }
 
   return (
     <main>
