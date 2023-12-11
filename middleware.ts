@@ -9,19 +9,13 @@ export async function middleware(req: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const authPath = "/auth/sign-in";
-
-  if (user && req.nextUrl.pathname === authPath) {
-    return NextResponse.redirect(new URL("/journal", req.url));
-  }
-
-  if (!user && req.nextUrl.pathname !== authPath) {
-    return NextResponse.redirect(new URL(authPath, req.url));
+  if (!user) {
+    return NextResponse.redirect(new URL("/auth/sign-in", req.url));
   }
 
   return res;
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/", "/journal/:path*"],
 };
