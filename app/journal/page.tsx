@@ -1,13 +1,11 @@
-import { Database } from "@/supabase/types";
-import { createServerActionClient, createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import createSupabaseClient from "@/supabase/client";
+import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import Link from "next/link";
 
 export default async function Page() {
-  const supabase = createServerComponentClient<Database>({
-    cookies,
-  });
+  const supabase = createSupabaseClient("ServerComponentClient");
 
   const { data: journals, error } = await supabase.from("journal").select("*");
 
