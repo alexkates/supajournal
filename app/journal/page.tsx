@@ -1,31 +1,11 @@
 import createSupabaseClient from "@/supabase/client";
-import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
-import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
 import Link from "next/link";
+import createJournal from "./_actions/createJournal";
 
 export default async function Page() {
   const supabase = createSupabaseClient("ServerComponentClient");
 
   const { data: journals, error } = await supabase.from("journal").select("*");
-
-  async function addJournal(formData: FormData) {
-    "use server";
-
-    const supabase = createServerActionClient({ cookies });
-
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    const name = formData.get("name") as string;
-    const description = formData.get("description") as string;
-    const user_id = user?.id!;
-
-    await supabase.from("journal").insert({ name, description, user_id });
-
-    revalidatePath("/");
-  }
 
   return (
     <main>
@@ -38,7 +18,7 @@ export default async function Page() {
         </div>
       ))}
 
-      <form action={addJournal}>
+      <form action={createJournal}>
         <input name="name" placeholder="name" />
         <input name="description" placeholder="description" />
 
