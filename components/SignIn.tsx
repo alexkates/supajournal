@@ -2,7 +2,6 @@
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Auth } from "@supabase/auth-ui-react";
-import css from "./SignIn.module.css";
 
 const SignIn = () => {
   const supabase = createClientComponentClient();
@@ -12,8 +11,7 @@ const SignIn = () => {
       <Auth
         supabaseClient={supabase}
         providers={[]}
-        view="magic_link"
-        magicLink
+        view="sign_in"
         redirectTo="/journal"
         appearance={{
           extend: false,
