@@ -1,5 +1,7 @@
 import ThemeSelector from "@/components/ThemeSelector";
 import "./globals.css";
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 const defaultUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
 
@@ -12,9 +14,8 @@ export const metadata = {
 export default async function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <ThemeSelector />
-
+      <body className="container mx-auto">
+        <Navbar />
         {children}
       </body>
     </html>

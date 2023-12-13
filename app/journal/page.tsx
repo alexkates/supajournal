@@ -5,24 +5,51 @@ import createJournal from "./_actions/createJournal";
 export default async function Page() {
   const supabase = createSupabaseClient("ServerComponentClient");
 
-  const { data: journals, error } = await supabase.from("journal").select("*");
+  const { data: journals } = await supabase.from("journal").select("*");
 
   return (
-    <main>
-      <h1>Journals</h1>
-      <p>{error?.message}</p>
-      {journals?.map((journal) => (
-        <div key={journal.id}>
-          <Link href={`/journal/${journal.id}`}>{journal.name}</Link>
-          <p>{journal.description}</p>
-        </div>
-      ))}
+    <main className="flex flex-col gap-8">
+      <div className="overflow-x-auto">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {journals?.map((journal) => (
+              <tr key={journal.id}>
+                <td>
+                  <Link className="link link-primary" href={`/journal/${journal.id}`}>
+                    {journal.name}
+                  </Link>
+                </td>
+                <td>{journal.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <form action={createJournal}>
-        <input name="name" placeholder="name" />
-        <input name="description" placeholder="description" />
+      <form action={createJournal} className="flex flex-col gap-8">
+        <label className="form-control">
+          <div className="label">
+            <span className="label-text">Journal Name</span>
+          </div>
+          <input type="text" name="name" placeholder="Daily Journal" className="input input-bordered" />
+        </label>
 
-        <button type="submit">Add Journal</button>
+        <label className="form-control">
+          <div className="label">
+            <span className="label-text">Description</span>
+          </div>
+          <input type="text" name="description" placeholder="Thoughts and reflections on the day" className="input input-bordered" />
+        </label>
+
+        <button className="btn btn-primary" type="submit">
+          Add Journal
+        </button>
       </form>
     </main>
   );
