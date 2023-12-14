@@ -1,9 +1,10 @@
-import createSupabaseClient from "@/supabase/client";
-import Link from "next/link";
 import createJournalEntry from "./_actions/createJournalEntry";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import { Database } from "@/supabase/types";
 
 export default async function Page() {
-  const supabase = createSupabaseClient("ServerComponentClient");
+  const supabase = createServerComponentClient<Database>({ cookies });
 
   const { data: journalEntries } = await supabase.from("journal_entry").select("*");
 
