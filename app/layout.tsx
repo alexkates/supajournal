@@ -1,7 +1,16 @@
+import { ThemeModeToggle } from "@/components/ThemeModeToggle";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { cn } from "@/lib/utils";
+
+import { Inter as FontSans } from "next/font/google";
 
 const defaultUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
+
+export const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
@@ -11,10 +20,12 @@ export const metadata = {
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="light">
-      <body className="container mx-auto">
-        <Navbar />
-        {children}
+    <html lang="en">
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <ThemeModeToggle />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
