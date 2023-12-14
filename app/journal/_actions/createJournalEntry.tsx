@@ -2,8 +2,9 @@
 
 import createSupabaseClient from "@/supabase/client";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
-export default async function createJournal(formData: FormData) {
+export default async function createJournalEntry(formData: FormData) {
   const supabase = createSupabaseClient("ServerActionClient");
 
   const {
@@ -11,10 +12,10 @@ export default async function createJournal(formData: FormData) {
   } = await supabase.auth.getUser();
 
   const name = formData.get("name") as string;
-  const description = formData.get("description") as string;
   const user_id = user?.id!;
 
-  await supabase.from("journal").insert({ name, description, user_id });
+  const { data: newJournalEntry } = await supabase.from("journal_entry").insert({ name, user_id }).select("id").single();
 
   revalidatePath("/");
+  redirect(`/journal/${newJournalEntry?.id}`);
 }

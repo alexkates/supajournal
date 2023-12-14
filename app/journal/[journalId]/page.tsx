@@ -1,3 +1,4 @@
+import JournalEntryEditor from "@/components/JournalEntryEditor";
 import { Database } from "@/supabase/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
@@ -6,11 +7,15 @@ import { notFound } from "next/navigation";
 export default async function Page({ params }: { params: { journalId: string } }) {
   const supabase = createServerComponentClient<Database>({ cookies });
 
-  const { data: journal } = await supabase.from("journal").select("*").eq("id", params.journalId).single();
+  const { data: journalEntry } = await supabase.from("journal_entry").select("*").eq("id", params.journalId).single();
 
-  if (!journal) {
+  if (!journalEntry) {
     notFound();
   }
 
-  return <div>My Journal: {journal.name}</div>;
+  return (
+    <main className="flex flex-col gap-8">
+      <JournalEntryEditor journalEntry={journalEntry} />
+    </main>
+  );
 }

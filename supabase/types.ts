@@ -34,65 +34,29 @@ export interface Database {
   }
   public: {
     Tables: {
-      journal: {
+      journal_entry: {
         Row: {
+          content: Json | null
           created_at: string
-          description: string | null
           id: string
           name: string | null
           user_id: string
         }
         Insert: {
+          content?: Json | null
           created_at?: string
-          description?: string | null
           id?: string
           name?: string | null
           user_id: string
         }
         Update: {
+          content?: Json | null
           created_at?: string
-          description?: string | null
           id?: string
           name?: string | null
           user_id?: string
         }
         Relationships: [
-          {
-            foreignKeyName: "journal_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
-      journal_entry: {
-        Row: {
-          created_at: string
-          id: string
-          journal_id: string
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          journal_id: string
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          journal_id?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "journal_entry_journal_id_fkey"
-            columns: ["journal_id"]
-            isOneToOne: false
-            referencedRelation: "journal"
-            referencedColumns: ["id"]
-          },
           {
             foreignKeyName: "journal_entry_user_id_fkey"
             columns: ["user_id"]
