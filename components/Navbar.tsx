@@ -1,5 +1,4 @@
 import Link from "next/link";
-import ThemeSelector from "./ThemeSelector";
 
 export default function Navbar() {
   return (
@@ -18,9 +17,6 @@ export default function Navbar() {
             <Link href="/journal">Journals</Link>
           </li>
         </ul>
-      </div>
-      <div className="ml-4">
-        <ThemeSelector />
       </div>
     </div>
   );
