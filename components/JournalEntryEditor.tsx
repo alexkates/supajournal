@@ -16,16 +16,17 @@ export default function JournalEntryEditor({ journalEntry }: Props) {
   }
 
   return (
-    <Editor
-      className="relative min-h-[500px] w-full max-w-screen-lg border-stone-200 bg-white sm:mb-[calc(20vh)] sm:rounded-lg sm:border sm:shadow-lg"
-      defaultValue={journalEntry.content as string}
-      disableLocalStorage
-      onDebouncedUpdate={(editor) => {
-        const json = editor?.getJSON();
-        if (json) {
-          handleJournalEntryUpdated(json);
-        }
-      }}
-    />
+    <div className="relative w-full max-w-screen-lg">
+      <Editor
+        defaultValue={journalEntry.content as string}
+        disableLocalStorage
+        onDebouncedUpdate={(editor) => {
+          const json = editor?.getJSON();
+          if (json) {
+            handleJournalEntryUpdated(json);
+          }
+        }}
+      />
+    </div>
   );
 }

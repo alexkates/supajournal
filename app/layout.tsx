@@ -23,7 +23,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
     <html lang="en">
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <ThemeModeToggle />
+          {/* <ThemeModeToggle /> */}
           {children}
         </ThemeProvider>
       </body>
