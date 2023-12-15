@@ -13,9 +13,5 @@ export default async function Page({ params }: { params: { journalId: string } }
     notFound();
   }
 
-  return (
-    <main className="flex flex-col gap-8">
-      <JournalEntryEditor journalEntry={journalEntry} />
-    </main>
-  );
+  return <JournalEntryEditor journalEntry={journalEntry} />;
 }

@@ -13,7 +13,8 @@ export default async function createJournalEntry(formData: FormData) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const name = formData.get("name") as string;
+  const defaultName = `Journal Entry ${new Date().toLocaleDateString()}`;
+  const name = (formData.get("name") as string | undefined) ?? defaultName;
   const user_id = user?.id!;
 
   const content = {
@@ -21,8 +22,8 @@ export default async function createJournalEntry(formData: FormData) {
     content: [
       {
         type: "heading",
-        attrs: { level: 2 },
-        content: [{ type: "text", text: "Today's Journal Entry" }],
+        attrs: { level: 1 },
+        content: [{ type: "text", text: name }],
       },
     ],
   };
