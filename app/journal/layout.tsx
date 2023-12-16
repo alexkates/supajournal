@@ -7,6 +7,7 @@ import createJournalEntry from "./_actions/createJournalEntry";
 import { Button } from "@/components/ui/button";
 import { PenBoxIcon } from "lucide-react";
 import AvatarMenu from "@/components/AvatarMenu";
+import JournalEntryList from "@/components/JournalEntryList";
 
 type Props = {
   children: React.ReactNode;
@@ -40,20 +41,8 @@ export default async function JournalLayout({ children }: Props) {
               </Button>
             </form>
           </div>
+          <JournalEntryList journalEntries={journalEntries} />
 
-          <ul className="list-none">
-            {journalEntries?.map((journalEntry) => {
-              const journalName = journalEntry.name.length > 20 ? `${journalEntry.name.substring(0, 22)}...` : journalEntry.name;
-
-              return (
-                <li key={journalEntry.id}>
-                  <Button asChild variant="ghost" className="w-full justify-start ">
-                    <Link href={`/journal/${journalEntry.id}`}>{journalName}</Link>
-                  </Button>
-                </li>
-              );
-            })}
-          </ul>
           <div className="mt-auto flex flex-col gap-2">
             <div className="flex w-full justify-center">
               <AvatarMenu email={user?.email!} />
