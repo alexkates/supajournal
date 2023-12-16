@@ -40,7 +40,7 @@ export interface Database {
           createdAt: string
           id: string
           name: string
-          updatedAt: string | null
+          updatedAt: string
           userId: string
           wordCount: number
         }
@@ -49,7 +49,7 @@ export interface Database {
           createdAt?: string
           id?: string
           name: string
-          updatedAt?: string | null
+          updatedAt?: string
           userId: string
           wordCount?: number
         }
@@ -58,7 +58,7 @@ export interface Database {
           createdAt?: string
           id?: string
           name?: string
-          updatedAt?: string | null
+          updatedAt?: string
           userId?: string
           wordCount?: number
         }
