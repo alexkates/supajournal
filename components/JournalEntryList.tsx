@@ -16,7 +16,7 @@ export default function JournalEntryList({ journalEntries }: Props) {
       {journalEntries?.map((journalEntry) => {
         const journalName = journalEntry.name.length > 20 ? `${journalEntry.name.substring(0, 22)}...` : journalEntry.name;
         const isActive = pathname.includes(journalEntry.id);
-        const buttonVariant = isActive ? "default" : "ghost";
+        const buttonVariant = isActive ? "secondary" : "ghost";
 
         return (
           <li key={journalEntry.id}>

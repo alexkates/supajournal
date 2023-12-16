@@ -53,7 +53,21 @@ Return only a JSON object in the following format. The JSON needs to be properly
       {
         type: "heading",
         attrs: { level: 3 },
-        content: [{ type: "text", text: `${prompt.prompt}\n\n${prompt.example}` }],
+        content: [{ type: "text", text: `${prompt.prompt}` }],
+      },
+      {
+        type: "paragraph",
+        content: [
+          {
+            type: "text",
+            text: `Example: ${prompt.example}`,
+            marks: [
+              {
+                type: "italic",
+              },
+            ],
+          },
+        ],
       },
     ],
   };
