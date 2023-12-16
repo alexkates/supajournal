@@ -6,6 +6,7 @@ import Link from "next/link";
 import createJournalEntry from "./_actions/createJournalEntry";
 import { Button } from "@/components/ui/button";
 import { PenBoxIcon } from "lucide-react";
+import AvatarMenu from "@/components/AvatarMenu";
 
 type Props = {
   children: React.ReactNode;
@@ -13,6 +14,9 @@ type Props = {
 
 export default async function JournalLayout({ children }: Props) {
   const supabase = createServerComponentClient<Database>({ cookies });
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   const { data: journalEntries } = await supabase.from("journal_entry").select("id, name");
 
@@ -47,8 +51,8 @@ export default async function JournalLayout({ children }: Props) {
             ))}
           </ul>
           <div className="mt-auto flex flex-col gap-2">
-            <div className="flex w-full justify-between">
-              <span className="text-sm font-medium">email@example.com</span>
+            <div className="flex w-full justify-center">
+              <AvatarMenu email={user?.email!} />
             </div>
           </div>
         </div>

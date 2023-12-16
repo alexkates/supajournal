@@ -6,8 +6,6 @@ import { Database } from "@/supabase/types";
 export default async function Page() {
   const supabase = createServerComponentClient<Database>({ cookies });
 
-  const { data: journalEntries } = await supabase.from("journal_entry").select("*");
-
   return (
     <main className="flex flex-col gap-8">
       <form action={createJournalEntry} className="flex flex-col gap-8">
