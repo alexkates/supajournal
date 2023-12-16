@@ -7,13 +7,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { AuthOtpResponse } from "@supabase/supabase-js";
 
 export default function Component() {
   const [email, setEmail] = useState("");
   const [authResponse, setAuthResponse] = useState<AuthOtpResponse | null>(null);
-  const router = useRouter();
 
   const supabase = createClientComponentClient();
 
