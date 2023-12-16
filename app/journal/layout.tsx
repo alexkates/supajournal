@@ -23,8 +23,8 @@ export default async function JournalLayout({ children }: Props) {
 
   return (
     <div className="h-screen flex">
-      <aside id="sidebar" className="h-screen w-64 py-8 px-6 border-r border-r-slate-500" aria-label="Sidebar">
-        <div className="flex h-full flex-col overflow-y-auto overflow-x-hidden">
+      <aside id="sidebar" className="h-screen w-auto py-8 px-6 border-r border-r-slate-500" aria-label="Sidebar">
+        <div className="flex h-full flex-col overflow-y-auto overflow-x-hidden px-4">
           <div className="flex w-full justify-between my-2 items-center">
             <Button asChild variant={"ghost"}>
               <Link href="/journal">
