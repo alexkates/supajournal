@@ -1,4 +1,4 @@
-export default function calculateStreak(data: { createdAt: string; wordCount: number }[]): number {
+export default function calculateStreak(data: { createdAt: string; wordCount: number }[]) {
   data.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
   let streak = 0;
@@ -19,5 +19,5 @@ export default function calculateStreak(data: { createdAt: string; wordCount: nu
     }
   }
 
-  return streak;
+  return { streak };
 }
