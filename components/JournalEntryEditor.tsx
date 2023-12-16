@@ -4,16 +4,19 @@ import { Database, Tables } from "@/supabase/types";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Editor } from "novel";
 import { JSONContent } from "@tiptap/core";
+import countWords from "@/lib/countWords";
 
 type Props = {
-  journalEntry: Tables<"journal_entry">;
+  journalEntry: Tables<"JournalEntry">;
 };
 
 export default function JournalEntryEditor({ journalEntry }: Props) {
   async function handleJournalEntryUpdated(content: JSONContent) {
     const supabase = createClientComponentClient<Database>();
 
-    return supabase.from("journal_entry").update({ content }).eq("id", journalEntry.id);
+    const wordCount = countWords(content);
+
+    return supabase.from("JournalEntry").update({ content, wordCount }).eq("id", journalEntry.id);
   }
 
   return (

@@ -5,5 +5,7 @@ import { Database } from "@/supabase/types";
 export default async function Page() {
   const supabase = createServerComponentClient<Database>({ cookies });
 
+  const { data, error } = await supabase.from("JournalEntry").select("*");
+
   return <main className="flex flex-col items-center justify-center w-full h-full"></main>;
 }

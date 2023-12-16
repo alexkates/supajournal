@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 type Props = {
-  journalEntries: Pick<Tables<"journal_entry">, "id" | "name">[] | null;
+  journalEntries: Pick<Tables<"JournalEntry">, "id" | "name">[] | null;
 };
 
 export default function JournalEntryList({ journalEntries }: Props) {

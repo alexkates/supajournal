@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 export default async function Page({ params }: { params: { journalId: string } }) {
   const supabase = createServerComponentClient<Database>({ cookies });
 
-  const { data: journalEntry } = await supabase.from("journal_entry").select("*").eq("id", params.journalId).single();
+  const { data: journalEntry } = await supabase.from("JournalEntry").select("*").eq("id", params.journalId).single();
 
   if (!journalEntry) {
     notFound();

@@ -34,35 +34,38 @@ export interface Database {
   }
   public: {
     Tables: {
-      journal_entry: {
+      JournalEntry: {
         Row: {
           content: Json | null
-          created_at: string
+          createdAt: string
           id: string
           name: string
-          updated_at: string | null
-          user_id: string
+          updatedAt: string | null
+          userId: string
+          wordCount: number
         }
         Insert: {
           content?: Json | null
-          created_at?: string
+          createdAt?: string
           id?: string
           name: string
-          updated_at?: string | null
-          user_id: string
+          updatedAt?: string | null
+          userId: string
+          wordCount?: number
         }
         Update: {
           content?: Json | null
-          created_at?: string
+          createdAt?: string
           id?: string
           name?: string
-          updated_at?: string | null
-          user_id?: string
+          updatedAt?: string | null
+          userId?: string
+          wordCount?: number
         }
         Relationships: [
           {
-            foreignKeyName: "journal_entry_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: "JournalEntry_userId_fkey"
+            columns: ["userId"]
             isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]

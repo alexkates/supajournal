@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import OpenAI from "openai";
 import { JSONContent } from "@tiptap/core";
+import countWords from "@/lib/countWords";
 
 type PromptResponse = {
   prompt: string;
@@ -45,7 +46,7 @@ Return only a JSON object in the following format. The JSON needs to be properly
   } = await supabase.auth.getUser();
 
   const name = prompt.title;
-  const user_id = user?.id!;
+  const userId = user?.id!;
 
   const content: JSONContent = {
     type: "doc",
@@ -72,7 +73,9 @@ Return only a JSON object in the following format. The JSON needs to be properly
     ],
   };
 
-  const { data: newJournalEntry } = await supabase.from("journal_entry").insert({ name, user_id, content }).select("id").single();
+  const wordCount = countWords(content);
+
+  const { data: newJournalEntry } = await supabase.from("JournalEntry").insert({ name, userId, content, wordCount }).select("id").single();
 
   redirect(`/journal/${newJournalEntry?.id}`);
 }

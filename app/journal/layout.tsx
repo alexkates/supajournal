@@ -19,7 +19,7 @@ export default async function JournalLayout({ children }: Props) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { data: journalEntries } = await supabase.from("journal_entry").select("id, name").order("updated_at", { ascending: false });
+  const { data: journalEntries } = await supabase.from("JournalEntry").select("id, name").order("updatedAt", { ascending: false });
 
   return (
     <div className="h-screen flex">
