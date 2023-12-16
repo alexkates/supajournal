@@ -19,8 +19,15 @@ export default async function Page() {
   const { streak } = calculateStreak(journalEntries);
 
   return (
-    <main className="flex flex-col items-center justify-center w-full h-full">
-      <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-3">
+    <main className="flex flex-col container">
+      <div className="flex">
+        <div className="flex flex-col items-start">
+          <h1 className="text-3xl font-bold">Supajournal</h1>
+          <p className="text-xs text-muted-foreground">Your writing stats</p>
+        </div>
+      </div>
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div></div>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Journal Entries</CardTitle>
