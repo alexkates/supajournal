@@ -28,7 +28,7 @@ Return only a JSON object in the following format. The JSON needs to be properly
 {
   "prompt": "The prompt to be displayed to the user. 1 sentence max.",
   "example": "An example of a journal entry that could be written using this prompt. 1 sentence max.",
-  "title": "A creative yet concise title for the journal entry. 20 words or less."
+  "title": "A creative yet concise title for the journal entry. 40 characters or less."
 }
 `;
 

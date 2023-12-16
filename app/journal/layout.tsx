@@ -25,25 +25,25 @@ export default async function JournalLayout({ children }: Props) {
     <div className="h-screen flex">
       <aside id="sidebar" className="h-screen w-auto py-8 px-6 border-r border-r-slate-500" aria-label="Sidebar">
         <div className="flex h-full flex-col overflow-y-auto overflow-x-hidden px-4">
-          <div className="flex w-full justify-between my-2 items-center">
-            <Button asChild variant={"ghost"}>
-              <Link href="/journal">
-                <span className="font-bold">Supajournal</span>
-              </Link>
-            </Button>
-            <ThemeModeToggle />
-          </div>
-          <div className="flex w-full justify-center my-2 items-center">
-            <form action={createJournalEntry}>
+          <div className="flex flex-col w-full space-y-8">
+            <div className="flex justify-between items-center">
+              <Button asChild variant={"ghost"}>
+                <Link href="/journal">
+                  <span className="font-bold text-xl">Supajournal</span>
+                </Link>
+              </Button>
+              <ThemeModeToggle />
+            </div>
+            <form action={createJournalEntry} className="flex justify-center">
               <Button variant={"default"}>
                 <PenBoxIcon className="w-4 h-4 mr-2" />
                 Create Journal Entry
               </Button>
             </form>
+            <JournalEntryList journalEntries={journalEntries} />
           </div>
-          <JournalEntryList journalEntries={journalEntries} />
 
-          <div className="mt-auto flex flex-col gap-2">
+          <div className="mt-auto flex flex-col">
             <div className="flex w-full justify-center">
               <AvatarMenu email={user?.email!} />
             </div>
