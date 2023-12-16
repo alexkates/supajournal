@@ -2,7 +2,6 @@
 
 import { Database } from "@/supabase/types";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -30,6 +29,5 @@ export default async function createJournalEntry(formData: FormData) {
 
   const { data: newJournalEntry } = await supabase.from("journal_entry").insert({ name, user_id, content }).select("id").single();
 
-  revalidatePath("/");
   redirect(`/journal/${newJournalEntry?.id}`);
 }

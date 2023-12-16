@@ -19,8 +19,9 @@ export default function JournalEntryEditor({ journalEntry }: Props) {
   return (
     <Editor
       className="w-full h-full"
-      defaultValue={journalEntry.content as string}
+      defaultValue={journalEntry.content as JSONContent}
       disableLocalStorage
+      completionApi="/api/completion"
       onDebouncedUpdate={(editor) => {
         const json = editor?.getJSON();
         if (json) {
