@@ -1,7 +1,6 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Database } from "@/supabase/types";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -18,8 +17,7 @@ export default function AvatarMenu({ email }: Props) {
 
     await supabase.auth.signOut();
 
-    revalidatePath("/");
-    redirect("/");
+    redirect("/auth/sign-in");
   }
 
   return (

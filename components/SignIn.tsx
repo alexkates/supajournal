@@ -26,7 +26,6 @@ export default function Component() {
     });
 
     setAuthResponse(response);
-    router.refresh();
   };
 
   if (authResponse) {
