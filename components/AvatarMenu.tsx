@@ -28,7 +28,7 @@ export default function AvatarMenu({ email }: Props) {
       <DropdownMenuContent>
         <DropdownMenuItem>
           <form action={signOut}>
-            <button type="submit">Sign out!!</button>
+            <button type="submit">Sign out</button>
           </form>
         </DropdownMenuItem>
       </DropdownMenuContent>
