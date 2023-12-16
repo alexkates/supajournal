@@ -39,7 +39,7 @@ export interface Database {
           content: Json | null
           created_at: string
           id: string
-          name: string | null
+          name: string
           updated_at: string | null
           user_id: string
         }
@@ -47,7 +47,7 @@ export interface Database {
           content?: Json | null
           created_at?: string
           id?: string
-          name?: string | null
+          name: string
           updated_at?: string | null
           user_id: string
         }
@@ -55,7 +55,7 @@ export interface Database {
           content?: Json | null
           created_at?: string
           id?: string
-          name?: string | null
+          name?: string
           updated_at?: string | null
           user_id?: string
         }

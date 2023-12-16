@@ -23,7 +23,7 @@ export default async function JournalLayout({ children }: Props) {
   return (
     <div className="h-screen flex">
       <aside id="sidebar" className="h-screen w-64 py-8 px-6 border-r border-r-slate-500" aria-label="Sidebar">
-        <div className="flex h-full flex-col overflow-y-auto">
+        <div className="flex h-full flex-col overflow-y-auto overflow-x-hidden">
           <div className="flex w-full justify-between my-2 items-center">
             <Button asChild variant={"ghost"}>
               <Link href="/journal">
@@ -41,14 +41,18 @@ export default async function JournalLayout({ children }: Props) {
             </form>
           </div>
 
-          <ul>
-            {journalEntries?.map((journalEntry) => (
-              <li key={journalEntry.id}>
-                <Button asChild variant={"ghost"}>
-                  <Link href={`/journal/${journalEntry.id}`}>{journalEntry.name}</Link>
-                </Button>
-              </li>
-            ))}
+          <ul className="list-none">
+            {journalEntries?.map((journalEntry) => {
+              const journalName = journalEntry.name.length > 20 ? `${journalEntry.name.substring(0, 22)}...` : journalEntry.name;
+
+              return (
+                <li key={journalEntry.id}>
+                  <Button asChild variant="ghost" className="w-full justify-start ">
+                    <Link href={`/journal/${journalEntry.id}`}>{journalName}</Link>
+                  </Button>
+                </li>
+              );
+            })}
           </ul>
           <div className="mt-auto flex flex-col gap-2">
             <div className="flex w-full justify-center">
