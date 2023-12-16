@@ -4,6 +4,7 @@ import { Database, Tables } from "@/supabase/types";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Editor } from "novel";
 import { JSONContent } from "@tiptap/core";
+import { useRouter } from "next/router";
 
 type Props = {
   journalEntry: Tables<"journal_entry">;
