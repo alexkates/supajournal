@@ -14,7 +14,9 @@ type Props = {
 export default async function JournalLayout({ children }: Props) {
   const supabase = createServerComponentClient<Database>({ cookies });
 
-  const user = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   if (!user) redirect("/");
 

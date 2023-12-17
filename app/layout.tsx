@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Metadata } from "next";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -56,17 +54,11 @@ interface RootLayoutProps {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const supabase = createServerComponentClient({ cookies });
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} flex h-screen flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar email={user?.email} />
+          <Navbar />
           <main className="container mx-auto px-4 h-full">{children}</main>
         </ThemeProvider>
         <Analytics />

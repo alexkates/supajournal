@@ -16,14 +16,13 @@ export default function AvatarMenu({ email }: Props) {
 
     await supabase.auth.signOut();
 
-    router.refresh();
-    router.push("/");
+    router.push("/journal");
   }
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <span className="text-xs">{email}</span>
+      <DropdownMenuTrigger className="items-center flex">
+        <span className="text-sm">{email}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
