@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { LucidePencil, PencilIcon, PencilLineIcon } from "lucide-react";
+import { LucidePencil, PencilLineIcon } from "lucide-react";
 
 export default function HeroHeader() {
   return (
-    <section className="container flex flex-col h-full justify-center -translate-y-24">
+    <section className="container flex flex-col h-full justify-center -translate-y-[72px]">
       <div className="flex flex-col items-center gap-8">
         <div className="space-y-2 text-center">
           <h1 className="text-6xl font-bold">Supajournal</h1>

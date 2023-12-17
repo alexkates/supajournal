@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import OpenAI from "openai";
 import { JSONContent } from "@tiptap/core";
 import { countWords, getMostPopularWordAndCount } from "@/lib/count-words";
+import { revalidatePath } from "next/cache";
 
 type PromptResponse = {
   prompt: string;
@@ -91,5 +92,6 @@ Return only a JSON object in the following format. The JSON needs to be properly
     .select("id")
     .single();
 
+  revalidatePath("/");
   redirect(`/journal/${newJournalEntry?.id}`);
 }
