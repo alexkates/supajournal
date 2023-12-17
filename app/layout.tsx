@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Metadata } from "next";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -68,6 +69,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           <Navbar email={user?.email} />
           <main className="container mx-auto px-4 h-full">{children}</main>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
