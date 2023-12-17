@@ -5,6 +5,7 @@ import createJournalEntry from "./_actions/createJournalEntry";
 import { Button } from "@/components/ui/button";
 import { PenBoxIcon } from "lucide-react";
 import JournalEntryList from "@/components/journal-entry-list";
+import { redirect } from "next/navigation";
 
 type Props = {
   children: React.ReactNode;
@@ -12,6 +13,10 @@ type Props = {
 
 export default async function JournalLayout({ children }: Props) {
   const supabase = createServerComponentClient<Database>({ cookies });
+
+  const user = await supabase.auth.getUser();
+
+  if (!user) redirect("/");
 
   const { data: journalEntries } = await supabase.from("JournalEntry").select("id, name").order("updatedAt", { ascending: false });
 
