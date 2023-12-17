@@ -2,8 +2,13 @@
 
 import Link from "next/link";
 import { ThemeModeToggle } from "@/components/theme-mode-toggle";
+import AvatarMenu from "./avatar-menu";
 
-export default function Navbar() {
+type Props = {
+  email?: string;
+};
+
+export default function Navbar({ email }: Props) {
   return (
     <nav className="flex items-center justify-between container p-4 z-10">
       <Link href="/journal">
@@ -11,7 +16,10 @@ export default function Navbar() {
           Supa<span className="text-primary">journal</span>
         </h1>
       </Link>
-      <ThemeModeToggle />
+      <div className="flex items-center">
+        {email && <AvatarMenu email={email} />}
+        <ThemeModeToggle />
+      </div>
     </nav>
   );
 }

@@ -53,7 +53,9 @@ export default function Component() {
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold">Supajournal</CardTitle>
+        <CardTitle className="text-2xl font-bold">
+          Supa<span className="text-primary">journal</span>
+        </CardTitle>
         <CardDescription>Enter your email below to receive a magic link for authentication</CardDescription>
       </CardHeader>
       <CardContent>
@@ -66,12 +68,12 @@ export default function Component() {
             Send Magic Link
           </Button>
         </div>
-        <div className="mt-4 text-center text-sm">
+        {/* <div className="mt-4 text-center text-sm">
           By proceeding, you agree to our{" "}
           <Link className="underline" href="#">
             Terms of Service
           </Link>
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   );

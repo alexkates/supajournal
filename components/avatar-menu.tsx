@@ -1,23 +1,23 @@
+"use client";
+
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Database } from "@/supabase/types";
-import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation";
 
 type Props = {
   email: string;
 };
 
 export default function AvatarMenu({ email }: Props) {
+  const router = useRouter();
+
   async function signOut() {
-    "use server";
-    const supabase = createServerActionClient<Database>({
-      cookies,
-    });
+    const supabase = createClientComponentClient();
 
     await supabase.auth.signOut();
 
-    redirect("/auth/sign-in");
+    router.refresh();
+    router.push("/");
   }
 
   return (
@@ -27,9 +27,7 @@ export default function AvatarMenu({ email }: Props) {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <form action={signOut}>
-            <button type="submit">Sign out</button>
-          </form>
+          <button onClick={signOut}>Sign out</button>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
