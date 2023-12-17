@@ -4,12 +4,11 @@ import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/com
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useState } from "react";
 import { AuthOtpResponse } from "@supabase/supabase-js";
 
-export default function Component() {
+export default function SignIn() {
   const [email, setEmail] = useState("");
   const [authResponse, setAuthResponse] = useState<AuthOtpResponse | null>(null);
 
@@ -30,21 +29,13 @@ export default function Component() {
     return (
       <Card className="mx-auto max-w-sm">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold">Supajournal</CardTitle>
-          <CardDescription>Check your email for the magic link.</CardDescription>
+          <CardTitle className="text-2xl font-bold">You're almost there</CardTitle>
+          <CardDescription>Check your email to finish signing in.</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <p className="text-sm"></p>
-            </div>
-            <div className="space-y-2">
-              <Button className="w-full" onClick={handleSignIn}>
-                Resend Magic Link
-              </Button>
-            </div>
-          </div>
-          <div className="mt-4 text-center text-xs">Need to resend the magic link?</div>
+          <Button variant={"link"} onClick={handleSignIn}>
+            Need to resend the magic link?{" "}
+          </Button>
         </CardContent>
       </Card>
     );
@@ -53,9 +44,7 @@ export default function Component() {
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold">
-          Supa<span className="text-primary">journal</span>
-        </CardTitle>
+        <CardTitle className="text-2xl font-bold">Sign in to get started</CardTitle>
         <CardDescription>Enter your email below to receive a magic link for authentication</CardDescription>
       </CardHeader>
       <CardContent>
@@ -68,12 +57,6 @@ export default function Component() {
             Send Magic Link
           </Button>
         </div>
-        {/* <div className="mt-4 text-center text-sm">
-          By proceeding, you agree to our{" "}
-          <Link className="underline" href="#">
-            Terms of Service
-          </Link>
-        </div> */}
       </CardContent>
     </Card>
   );
