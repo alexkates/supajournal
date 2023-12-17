@@ -8,7 +8,7 @@ export default function HeroHeader() {
       <div className="flex flex-col items-center gap-12">
         <div className="space-y-8 text-center">
           <h1 className="text-6xl font-bold">
-            Build that <span className="text-primary ">journaling</span> habit
+            Build that <span className="text-primary">journaling</span> habit
             <br />
             once and for all.
           </h1>
