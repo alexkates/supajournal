@@ -10,7 +10,7 @@ export function getMostPopularWordAndCount(doc: JSONContent) {
   const wordCounts = wordsByCount(doc);
   const sortedWords = Object.entries(wordCounts).sort((a, b) => b[1] - a[1]);
 
-  return sortedWords[0];
+  return sortedWords[0] || [];
 }
 
 function wordsByCount(jsonContent: JSONContent) {
