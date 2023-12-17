@@ -29,7 +29,7 @@ export default function AuthForm() {
   };
 
   return (
-    <Button className="text-xl gap-x-2" onClick={signIn}>
+    <Button className="text-3xl gap-x-2 p-8" onClick={signIn}>
       <PencilLineIcon />
       Start Writing
     </Button>
