@@ -23,7 +23,7 @@ export default async function createJournalEntry() {
 
   const writingPromptPrompt = `Generate a concise and meaningful writing prompt for a journaling app. 
 The prompt should be brief and rooted in emotional self-awareness, resilience in adversity,
-the beauty of simplicity, or living in harmony with nature.
+the beauty of simplicity, living in harmony with nature, and similiar topics that you can create. Be creativeh here!
 
 Return only a JSON object in the following format. The JSON needs to be properly formated so that it can be parsed by the journaling app.
 {
