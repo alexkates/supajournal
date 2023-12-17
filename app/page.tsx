@@ -1,10 +1,12 @@
+import Hero from "@/components/hero";
 import Link from "next/link";
 
 export default async function Index() {
   return (
     <main>
-      <h1>Index</h1>
-      <Link href="/journal">Get Started</Link>
+      <Hero />
+      {/* <FeatureCards />
+      <Features /> */}
     </main>
   );
 }
