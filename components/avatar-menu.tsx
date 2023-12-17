@@ -16,7 +16,7 @@ export default function AvatarMenu({ email }: Props) {
 
     await supabase.auth.signOut();
 
-    router.push("/journal");
+    router.push("/");
   }
 
   return (
