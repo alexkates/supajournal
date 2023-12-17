@@ -4,7 +4,7 @@ import { Database, Tables } from "@/supabase/types";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Editor } from "novel";
 import { JSONContent } from "@tiptap/core";
-import { countWords, getMostPopularWordAndCount } from "@/lib/countWords";
+import { countWords, getMostPopularWordAndCount } from "@/lib/count-words";
 
 type Props = {
   journalEntry: Tables<"JournalEntry">;

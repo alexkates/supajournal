@@ -1,4 +1,4 @@
-import { ThemeModeToggle } from "@/components/ThemeModeToggle";
+import { ThemeModeToggle } from "@/components/theme-mode-toggle";
 import { Database } from "@/supabase/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
@@ -6,8 +6,8 @@ import Link from "next/link";
 import createJournalEntry from "./_actions/createJournalEntry";
 import { Button } from "@/components/ui/button";
 import { PenBoxIcon } from "lucide-react";
-import AvatarMenu from "@/components/AvatarMenu";
-import JournalEntryList from "@/components/JournalEntryList";
+import AvatarMenu from "@/components/avatar-menu";
+import JournalEntryList from "@/components/journal-entry-list";
 
 type Props = {
   children: React.ReactNode;

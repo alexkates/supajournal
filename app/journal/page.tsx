@@ -1,13 +1,13 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { Database } from "@/supabase/types";
-import calculateStreak from "@/lib/calculateStreakStats";
+import calculateStreak from "@/lib/get-streak-stats";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookHeart, CalendarClock, GanttChartSquare, LucidePencil, Tally5, WholeWord } from "lucide-react";
-import calculateWordCountStats from "@/lib/calculateWordCountStats";
-import calculateJournalEntriesStats from "@/lib/calculateJournalEntriesStats";
-import calculateWordsPerJournalEntryStats from "@/lib/calculateWordsPerJournalEntryStats";
-import calculateMostRecentEntryStats from "@/lib/calculateMostRecentEntryStats";
+import calculateWordCountStats from "@/lib/get-word-count-stats";
+import calculateJournalEntriesStats from "@/lib/get-journal-entry-stats";
+import calculateWordsPerJournalEntryStats from "@/lib/get-words-per-journal-entry-stats";
+import calculateMostRecentEntryStats from "@/lib/get-most-recent-entry-stats";
 
 export default async function Page() {
   const supabase = createServerComponentClient<Database>({ cookies });

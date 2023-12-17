@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ThemeModeToggle } from "@/components/ThemeModeToggle";
+import { ThemeModeToggle } from "@/components/theme-mode-toggle";
 import { siteConfig } from "@/config/site";
 import { navLinks } from "@/config/links";
 

@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import OpenAI from "openai";
 import { JSONContent } from "@tiptap/core";
-import { countWords, getMostPopularWordAndCount } from "@/lib/countWords";
+import { countWords, getMostPopularWordAndCount } from "@/lib/count-words";
 
 type PromptResponse = {
   prompt: string;

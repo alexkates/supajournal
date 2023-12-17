@@ -1,4 +1,4 @@
-import JournalEntryEditor from "@/components/JournalEntryEditor";
+import JournalEntryEditor from "@/components/journal-entry-editor";
 import { Database } from "@/supabase/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
