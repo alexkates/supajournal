@@ -26,8 +26,8 @@ export default async function Page() {
   return (
     <main className="flex flex-col container py-8 space-y-4">
       <div className="flex flex-col items-start">
-        <h1 className="text-3xl font-bold">Supajournal</h1>
-        <p className="text-xs text-muted-foreground">Your writing stats</p>
+        <h1 className="text-3xl font-bold">Writing Stats</h1>
+        <p className="text-xs text-muted-foreground">Let's see how you're doing!</p>
       </div>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <Card>
