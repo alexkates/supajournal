@@ -39,7 +39,7 @@ export interface Database {
           content: Json | null
           createdAt: string
           id: string
-          mostPopularWord: string | null
+          mostPopularWord: string
           mostPopularWordCount: number
           name: string
           updatedAt: string
@@ -50,7 +50,7 @@ export interface Database {
           content?: Json | null
           createdAt?: string
           id?: string
-          mostPopularWord?: string | null
+          mostPopularWord?: string
           mostPopularWordCount?: number
           name: string
           updatedAt?: string
@@ -61,7 +61,7 @@ export interface Database {
           content?: Json | null
           createdAt?: string
           id?: string
-          mostPopularWord?: string | null
+          mostPopularWord?: string
           mostPopularWordCount?: number
           name?: string
           updatedAt?: string

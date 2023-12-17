@@ -74,7 +74,7 @@ Return only a JSON object in the following format. The JSON needs to be properly
   };
 
   const wordCount = countWords(content);
-  const [mostPopularWord, mostPopularWordCount] = getMostPopularWordAndCount([content]);
+  const [mostPopularWord, mostPopularWordCount] = getMostPopularWordAndCount(content);
 
   const { data: newJournalEntry } = await supabase
     .from("JournalEntry")

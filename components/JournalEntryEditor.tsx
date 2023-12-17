@@ -15,7 +15,7 @@ export default function JournalEntryEditor({ journalEntry }: Props) {
     const supabase = createClientComponentClient<Database>();
 
     const wordCount = countWords(content);
-    const [mostPopularWord, mostPopularWordCount] = getMostPopularWordAndCount([content]);
+    const [mostPopularWord, mostPopularWordCount] = getMostPopularWordAndCount(content);
 
     return await supabase.from("JournalEntry").update({ content, wordCount, mostPopularWord, mostPopularWordCount }).eq("id", journalEntry.id);
   }

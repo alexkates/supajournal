@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { Database } from "@/supabase/types";
 import calculateStreak from "@/lib/calculateStreakStats";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookHeart, CalendarClock, GanttChartSquare, LucidePencil, WholeWord } from "lucide-react";
+import { BookHeart, CalendarClock, GanttChartSquare, LucidePencil, Tally5, WholeWord } from "lucide-react";
 import calculateWordCountStats from "@/lib/calculateWordCountStats";
 import calculateJournalEntriesStats from "@/lib/calculateJournalEntriesStats";
 import calculateWordsPerJournalEntryStats from "@/lib/calculateWordsPerJournalEntryStats";
@@ -12,12 +12,13 @@ import calculateMostRecentEntryStats from "@/lib/calculateMostRecentEntryStats";
 export default async function Page() {
   const supabase = createServerComponentClient<Database>({ cookies });
 
-  const { data: journalEntries } = await supabase.from("JournalEntry").select("wordCount, createdAt");
+  const { data: journalEntries } = await supabase.from("JournalEntry").select("wordCount, createdAt, mostPopularWord, mostPopularWordCount");
 
   if (!journalEntries) return null;
 
   const { totalJournalEntries, jouralEntriesSymbol, journalEntriesDifferenceSinceLastMonth } = calculateJournalEntriesStats(journalEntries);
-  const { totalWordCount, wordCountSymbol, wordCountDifferenceSinceLastMonth } = calculateWordCountStats(journalEntries);
+  const { totalWordCount, wordCountSymbol, wordCountDifferenceSinceLastMonth, mostPopularWord, mostPopularWordCount } =
+    calculateWordCountStats(journalEntries);
   const { wordsPerEntry, wordsPerJournalEntrySymbol, wordsPerEntryDifferenceSinceLastMonth } = calculateWordsPerJournalEntryStats(journalEntries);
   const { streak } = calculateStreak(journalEntries);
   const { daysSinceLastEntry, mostRecentEntryDate } = calculateMostRecentEntryStats(journalEntries);
@@ -51,6 +52,18 @@ export default async function Page() {
             <p className="text-xs text-muted-foreground">Consecutive days writing</p>
           </CardContent>
         </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Most Popular Word</CardTitle>
+            <Tally5 className="h-5 w-5 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{mostPopularWord || `N/A`}</div>
+            <p className="text-xs text-muted-foreground">{`${mostPopularWordCount} uses across journal entries`}</p>
+          </CardContent>
+        </Card>
+
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Word Count</CardTitle>
