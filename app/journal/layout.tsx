@@ -18,6 +18,8 @@ export default async function JournalLayout({ children }: Props) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  if (!user) redirect("/");
+
   const { data: journalEntries } = await supabase.from("JournalEntry").select("id, name").order("updatedAt", { ascending: false });
 
   return (

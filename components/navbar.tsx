@@ -7,14 +7,15 @@ import { Button } from "./ui/button";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/supabase/types";
 import { useEffect, useState } from "react";
+import { get } from "http";
 
 export default function Navbar() {
   const [email, setEmail] = useState<string>();
 
   useEffect(() => {
-    async function getUser() {
-      const supabase = createClientComponentClient<Database>();
+    const supabase = createClientComponentClient<Database>();
 
+    async function getUser() {
       const {
         data: { user },
       } = await supabase.auth.getUser();
@@ -22,6 +23,10 @@ export default function Navbar() {
       if (user) setEmail(user.email);
       else setEmail(undefined);
     }
+
+    supabase.auth.onAuthStateChange((event) => {
+      getUser();
+    });
 
     getUser();
   }, []);
