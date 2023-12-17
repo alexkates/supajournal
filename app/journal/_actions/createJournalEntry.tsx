@@ -70,6 +70,15 @@ Return only a JSON object in the following format. The JSON needs to be properly
           },
         ],
       },
+      {
+        type: "paragraph",
+        content: [
+          {
+            type: "text",
+            text: "Time to write!",
+          },
+        ],
+      },
     ],
   };
 
