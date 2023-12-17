@@ -19,7 +19,7 @@ export default async function Page() {
   const { streak } = calculateStreak(journalEntries);
 
   return (
-    <main className="flex flex-col container">
+    <main className="flex flex-col container py-8">
       <div className="flex">
         <div className="flex flex-col items-start">
           <h1 className="text-3xl font-bold">Supajournal</h1>
