@@ -64,7 +64,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} flex min-h-screen flex-col `}>
+      <body className={`${inter.className} flex min-h-screen flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <main className="container mx-auto px-4">{children}</main>

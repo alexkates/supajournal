@@ -5,8 +5,8 @@ type Link = {
 
 export const navLinks: Link[] = [
   {
-    path: "/",
-    route: "Home",
+    path: "/journal",
+    route: "Journal",
   },
   {
     path: "/about",
