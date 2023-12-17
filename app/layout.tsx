@@ -1,59 +1,51 @@
 import "./globals.css";
-import { siteConfig } from "@/config/site";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  metadataBase: new URL(siteConfig.url.base),
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  keywords: siteConfig.keywords,
+const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
+  title: "Supajournal | A journaling app powered by Supabase and OpenAI",
+  description: "A journaling app powered by Supabase and OpenAI",
+  keywords: ["journal", "journaling", "supabase", "openai", "gpt-3", "gpt-3.5", "gpt-4"],
   authors: [
     {
-      name: siteConfig.author,
-      url: siteConfig.url.author,
+      name: "Alex Kates",
+      url: "https://alexkates.dev",
     },
   ],
-  creator: siteConfig.author,
+  creator: "Alex Kates",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url.base,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
+    url: baseUrl,
+    title: "Supajournal | A journaling app powered by Supabase and OpenAI",
+    description: "A journaling app powered by Supabase and OpenAI",
+    siteName: "Supajournal",
     images: [
       {
-        url: siteConfig.ogImage,
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: siteConfig.name,
+        alt: "Supajournal | A journaling app powered by Supabase and OpenAI",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    title: "Supajournal | A journaling app powered by Supabase and OpenAI",
+    description: "A journaling app powered by Supabase and OpenAI",
+    images: ["/og-image.png"],
     creator: "@thealexkates",
   },
   icons: {
     icon: "/favicon.ico",
   },
-};
-
-export const viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
 };
 
 interface RootLayoutProps {
