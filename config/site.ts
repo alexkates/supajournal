@@ -13,7 +13,3 @@ export const siteConfig: SiteConfig = {
   },
   ogImage: `${baseUrl}/og.jpg`,
 };
-
-export const contactConfig: ContactConfig = {
-  email: "daniel.alexander.kates@gmail.com",
-};

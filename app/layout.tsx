@@ -2,7 +2,6 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -43,7 +42,7 @@ export const metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@_rdev7",
+    creator: "@thealexkates",
   },
   icons: {
     icon: "/favicon.ico",
@@ -67,8 +66,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={`${inter.className} flex h-screen flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          <main className="container mx-auto px-4">{children}</main>
-          <Footer />
+          <main className="container mx-auto px-4 h-full">{children}</main>
         </ThemeProvider>
       </body>
     </html>
