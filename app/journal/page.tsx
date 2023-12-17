@@ -3,10 +3,11 @@ import { cookies } from "next/headers";
 import { Database } from "@/supabase/types";
 import calculateStreak from "@/lib/calculateStreakStats";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookHeart, GanttChartSquare, LucidePencil, WholeWord } from "lucide-react";
-import { calculateWordCountStats } from "../../lib/calculateWordCountStats";
-import { calculateJournalEntriesStats } from "../../lib/calculateJournalEntriesStats";
-import { calculateWordsPerJournalEntryStats } from "@/lib/calculateWordsPerJournalEntryStats";
+import { BookHeart, CalendarClock, GanttChartSquare, LucidePencil, WholeWord } from "lucide-react";
+import calculateWordCountStats from "@/lib/calculateWordCountStats";
+import calculateJournalEntriesStats from "@/lib/calculateJournalEntriesStats";
+import calculateWordsPerJournalEntryStats from "@/lib/calculateWordsPerJournalEntryStats";
+import calculateMostRecentEntryStats from "@/lib/calculateMostRecentEntryStats";
 
 export default async function Page() {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -17,12 +18,9 @@ export default async function Page() {
 
   const { totalJournalEntries, jouralEntriesSymbol, journalEntriesDifferenceSinceLastMonth } = calculateJournalEntriesStats(journalEntries);
   const { totalWordCount, wordCountSymbol, wordCountDifferenceSinceLastMonth } = calculateWordCountStats(journalEntries);
-  const {
-    wordsPerEntry: averageWordsPerJournalEntry,
-    wordsPerJournalEntrySymbol,
-    wordsPerEntryDifferenceSinceLastMonth: averageWordsPerJournalEntryDifferenceSinceLastMonth,
-  } = calculateWordsPerJournalEntryStats(journalEntries);
+  const { wordsPerEntry, wordsPerJournalEntrySymbol, wordsPerEntryDifferenceSinceLastMonth } = calculateWordsPerJournalEntryStats(journalEntries);
   const { streak } = calculateStreak(journalEntries);
+  const { daysSinceLastEntry, mostRecentEntryDate } = calculateMostRecentEntryStats(journalEntries);
 
   return (
     <main className="flex flex-col container py-8">
@@ -69,8 +67,18 @@ export default async function Page() {
             <BookHeart className="h-5 w-5 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{averageWordsPerJournalEntry}</div>
-            <p className="text-xs text-muted-foreground">{`${wordsPerJournalEntrySymbol}${averageWordsPerJournalEntryDifferenceSinceLastMonth} from last month`}</p>
+            <div className="text-2xl font-bold">{wordsPerEntry}</div>
+            <p className="text-xs text-muted-foreground">{`${wordsPerJournalEntrySymbol}${wordsPerEntryDifferenceSinceLastMonth} from last month`}</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Most Recent Entry</CardTitle>
+            <CalendarClock className="h-5 w-5 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{mostRecentEntryDate.toLocaleDateString()}</div>
+            <p className="text-xs text-muted-foreground">{`${daysSinceLastEntry} days since last entry`}</p>
           </CardContent>
         </Card>
       </div>

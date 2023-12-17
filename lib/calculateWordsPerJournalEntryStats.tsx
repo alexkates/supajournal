@@ -1,4 +1,4 @@
-export function calculateWordsPerJournalEntryStats(data: { wordCount: number; createdAt: string }[]) {
+export default function calculateWordsPerJournalEntryStats(data: { wordCount: number; createdAt: string }[]) {
   const totalWordCount = data.reduce((acc, { wordCount }) => acc + wordCount, 0);
   const wordsPerEntry = Math.round(totalWordCount / data.length);
 

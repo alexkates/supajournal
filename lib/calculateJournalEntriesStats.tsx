@@ -1,4 +1,4 @@
-export function calculateJournalEntriesStats(data: { wordCount: number; createdAt: string }[]) {
+export default function calculateJournalEntriesStats(data: { wordCount: number; createdAt: string }[]) {
   const totalJournalEntries = data.length;
   const journalEntriesLastMonth = data.filter(({ createdAt }) => {
     const date = new Date(createdAt);
