@@ -24,12 +24,10 @@ export default async function Page() {
   const { daysSinceLastEntry, mostRecentEntryDate } = calculateMostRecentEntryStats(journalEntries);
 
   return (
-    <main className="flex flex-col container py-8">
-      <div className="flex">
-        <div className="flex flex-col items-start">
-          <h1 className="text-3xl font-bold">Supajournal</h1>
-          <p className="text-xs text-muted-foreground">Your writing stats</p>
-        </div>
+    <main className="flex flex-col container py-8 space-y-4">
+      <div className="flex flex-col items-start">
+        <h1 className="text-3xl font-bold">Supajournal</h1>
+        <p className="text-xs text-muted-foreground">Your writing stats</p>
       </div>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <Card>
