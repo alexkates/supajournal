@@ -9,7 +9,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
+const baseUrl = "https://supajournal.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
