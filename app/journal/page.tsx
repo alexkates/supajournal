@@ -77,7 +77,7 @@ export default async function Page() {
             <CalendarClock className="h-5 w-5 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{mostRecentEntryDate.toLocaleDateString()}</div>
+            <div className="text-2xl font-bold">{mostRecentEntryDate?.toLocaleDateString() ?? "N/A"}</div>
             <p className="text-xs text-muted-foreground">{`${daysSinceLastEntry} days since last entry`}</p>
           </CardContent>
         </Card>

@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import OpenAI from "openai";
 import { JSONContent } from "@tiptap/core";
-import countWords from "@/lib/countWords";
+import { countWords, getMostPopularWordAndCount } from "@/lib/countWords";
 
 type PromptResponse = {
   prompt: string;
@@ -74,8 +74,13 @@ Return only a JSON object in the following format. The JSON needs to be properly
   };
 
   const wordCount = countWords(content);
+  const [mostPopularWord, mostPopularWordCount] = getMostPopularWordAndCount([content]);
 
-  const { data: newJournalEntry } = await supabase.from("JournalEntry").insert({ name, userId, content, wordCount }).select("id").single();
+  const { data: newJournalEntry } = await supabase
+    .from("JournalEntry")
+    .insert({ name, userId, content, wordCount, mostPopularWord, mostPopularWordCount })
+    .select("id")
+    .single();
 
   redirect(`/journal/${newJournalEntry?.id}`);
 }

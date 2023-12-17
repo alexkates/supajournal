@@ -1,3 +1,5 @@
+import { getMostPopularWordAndCount } from "./countWords";
+
 export default function calculateWordCountStats(data: { wordCount: number; createdAt: string }[]) {
   const totalWordCount = data.reduce((acc, { wordCount }) => acc + wordCount, 0);
   const wordCountLastMonth = data
@@ -23,5 +25,7 @@ export default function calculateWordCountStats(data: { wordCount: number; creat
 
   const wordCountDifferenceSinceLastMonth = wordCountThisMonth - wordCountLastMonth;
   const wordCountSymbol = wordCountDifferenceSinceLastMonth > 0 ? "+" : wordCountDifferenceSinceLastMonth < 0 ? "-" : "";
+  // const [mostPopularWord, mostPopularWordCount] = getMostPopularWordAndCount(data);
+
   return { totalWordCount, wordCountSymbol, wordCountDifferenceSinceLastMonth };
 }

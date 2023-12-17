@@ -4,7 +4,7 @@ import { Database, Tables } from "@/supabase/types";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Editor } from "novel";
 import { JSONContent } from "@tiptap/core";
-import countWords from "@/lib/countWords";
+import { countWords, getMostPopularWordAndCount } from "@/lib/countWords";
 
 type Props = {
   journalEntry: Tables<"JournalEntry">;
@@ -15,8 +15,9 @@ export default function JournalEntryEditor({ journalEntry }: Props) {
     const supabase = createClientComponentClient<Database>();
 
     const wordCount = countWords(content);
+    const [mostPopularWord, mostPopularWordCount] = getMostPopularWordAndCount([content]);
 
-    return supabase.from("JournalEntry").update({ content, wordCount }).eq("id", journalEntry.id);
+    return await supabase.from("JournalEntry").update({ content, wordCount, mostPopularWord, mostPopularWordCount }).eq("id", journalEntry.id);
   }
 
   return (
