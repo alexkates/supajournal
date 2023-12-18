@@ -1,11 +1,11 @@
 import { Database } from "@/supabase/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import createJournalEntry from "./_actions/createJournalEntry";
+import { redirect } from "next/navigation";
+import JournalEntryList from "@/components/journal-entry-list";
 import { Button } from "@/components/ui/button";
 import { PenBoxIcon } from "lucide-react";
-import JournalEntryList from "@/components/journal-entry-list";
-import { redirect } from "next/navigation";
+import createJournalEntry from "./_actions/createJournalEntry";
 
 type Props = {
   children: React.ReactNode;
@@ -24,7 +24,7 @@ export default async function JournalLayout({ children }: Props) {
 
   return (
     <div className="flex">
-      <aside id="sidebar" className="w-auto py-8 px-2" aria-label="Sidebar">
+      <aside id="sidebar" className="w-auto py-8 px-2 hidden md:flex" aria-label="Sidebar">
         <div className="flex flex-col overflow-y-auto overflow-x-hidden">
           <div className="flex flex-col w-full space-y-8">
             <form action={createJournalEntry} className="flex">
@@ -37,6 +37,7 @@ export default async function JournalLayout({ children }: Props) {
           </div>
         </div>
       </aside>
+
       <div className="w-full overflow-y-auto">{children}</div>
     </div>
   );

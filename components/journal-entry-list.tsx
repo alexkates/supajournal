@@ -12,7 +12,7 @@ type Props = {
 export default function JournalEntryList({ journalEntries }: Props) {
   const pathname = usePathname();
   return (
-    <ul className="list-none space-y-2">
+    <ul className="list-none space-y-6 md:space-y-2 ">
       {journalEntries?.map((journalEntry) => {
         const journalName = journalEntry.name.length > 40 ? `${journalEntry.name.substring(0, 40)}...` : journalEntry.name;
         const isActive = pathname.includes(journalEntry.id);
@@ -21,8 +21,8 @@ export default function JournalEntryList({ journalEntries }: Props) {
         return (
           <li key={journalEntry.id}>
             <Button asChild variant={buttonVariant} className="w-full justify-start">
-              <Link href={`/journal/${journalEntry.id}`} className="text-xs">
-                {journalName}
+              <Link href={`/journal/${journalEntry.id}`}>
+                <span className="md:text-xs text-md">{journalName}</span>
               </Link>
             </Button>
           </li>

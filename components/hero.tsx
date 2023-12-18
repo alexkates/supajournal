@@ -4,9 +4,9 @@ import SignIn from "./sign-in";
 
 export default function HeroHeader() {
   return (
-    <section className="container flex flex-col h-full pt-10 sm:pt-24">
+    <section className="container flex flex-col h-full pt-6 sm:pt-24">
       <div className="flex flex-col items-center gap-12">
-        <div className="space-y-8 text-center">
+        <div className="space-y-14 sm:space-y-8 text-center">
           <h1 className="text-6xl font-bold">
             Build that <span className="text-primary">journaling</span> habit
             <br />

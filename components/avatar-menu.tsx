@@ -23,7 +23,7 @@ export default function AvatarMenu({ email }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="items-center flex">
-        <span className="text-sm">{email}</span>
+        <span className="text-xs md:text-sm">{email}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
