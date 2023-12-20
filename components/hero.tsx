@@ -7,7 +7,7 @@ export default function Hero() {
     <section className="container flex flex-col h-full pt-6 sm:pt-24">
       <div className="flex flex-col items-center gap-12">
         <div className="space-y-14 sm:space-y-8 text-center">
-          <h1 className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary dark:to-accent to-zinc-800">
+          <h1 className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary dark:to-zinc-300 to-zinc-800">
             Build that journaling habit
             <br />
             once and for all
