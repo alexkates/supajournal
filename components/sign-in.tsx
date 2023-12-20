@@ -1,9 +1,6 @@
 "use client";
-import { Auth } from "@supabase/auth-ui-react";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Button } from "./ui/button";
-import { PencilLineIcon } from "lucide-react";
 
 export default function AuthForm() {
   const supabase = createClientComponentClient();
@@ -30,7 +27,6 @@ export default function AuthForm() {
 
   return (
     <Button className="text-3xl gap-x-2 p-8" onClick={signIn}>
-      <PencilLineIcon />
       Start Writing
     </Button>
   );
