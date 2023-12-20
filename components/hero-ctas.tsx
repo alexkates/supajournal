@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { GithubIcon } from "lucide-react";
 import Link from "next/link";
 
-export default function GetStartedButton() {
+export default function HeroCTAs() {
   const supabase = createClientComponentClient();
   const getURL = () => {
     let url = process?.env?.NEXT_PUBLIC_SITE_URL ?? process?.env?.NEXT_PUBLIC_VERCEL_URL ?? "http://localhost:3000/";
