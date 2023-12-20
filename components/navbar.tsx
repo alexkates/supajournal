@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ThemeModeToggle } from "@/components/theme-mode-toggle";
+import ThemeModeToggle from "@/components/theme-mode-toggle";
 import AvatarMenu from "./avatar-menu";
 import { Button } from "./ui/button";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Database } from "@/supabase/types";
 import { useEffect, useState } from "react";
-import { get } from "http";
 
 export default function Navbar() {
   const [email, setEmail] = useState<string>();
@@ -38,7 +37,7 @@ export default function Navbar() {
           Supa<span className="text-primary">journal</span>
         </Link>
       </Button>
-      <div className="flex items-center">
+      <div className="flex items-center gap-4">
         {email && <AvatarMenu email={email} />}
         <ThemeModeToggle />
       </div>
