@@ -19,7 +19,7 @@ export default function Hero() {
           </h2>
         </div>
         <SignIn />
-        <video className="w-full max-w-2xl shadow-2xl rounded-md" autoPlay loop muted playsInline>
+        <video className="w-full max-w-4xl shadow-2xl rounded-md" autoPlay loop muted playsInline>
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
       </div>
