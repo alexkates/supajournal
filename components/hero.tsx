@@ -1,6 +1,6 @@
 "use client";
 
-import SignIn from "./sign-in";
+import GetStartedButton from "./get-started-button";
 
 export default function Hero() {
   return (
@@ -13,12 +13,12 @@ export default function Hero() {
             once and for all
           </h1>
           <h2 className="font-light text-muted-foreground text-xl">
-            Supajournal makes it easy to build thatjournaling habit
+            Supajournal makes it easy to build that journaling habit
             <br />
             by providing you withinsights and meaningful writing prompts powered by OpenAI's GPT
           </h2>
         </div>
-        <SignIn />
+        <GetStartedButton />
         <video className="w-full max-w-4xl shadow-2xl rounded-md" autoPlay loop muted playsInline>
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
