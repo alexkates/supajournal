@@ -24,7 +24,7 @@ export default function HeroCTAs() {
   };
 
   return (
-    <div className="flex justify-evenly w-ful max-w-xl gap-4">
+    <div className="flex gap-4">
       <Button size={"lg"} onClick={signIn}>
         Get started
       </Button>
