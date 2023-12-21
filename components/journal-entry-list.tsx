@@ -12,7 +12,7 @@ type Props = {
 export default function JournalEntryList({ journalEntries }: Props) {
   const pathname = usePathname();
   return (
-    <ul className="list-none space-y-6 md:space-y-2 ">
+    <ul className="flex list-none flex-col gap-y-4 md:gap-y-2 ">
       {journalEntries?.map((journalEntry) => {
         const journalName = journalEntry.name.length > 40 ? `${journalEntry.name.substring(0, 40)}...` : journalEntry.name;
         const isActive = pathname.includes(journalEntry.id);

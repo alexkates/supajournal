@@ -30,16 +30,15 @@ export default async function Page() {
 
   return (
     <>
-      <main className="flex w-full flex-col items-center space-y-8 p-2 md:hidden">
-        <form action={createJournalEntry} className="flex">
-          <Button variant={"default"}>
-            <PenBoxIcon className="mr-2 h-4 w-4" />
-            Create Journal Entry
+      <main className="flex w-full flex-col p-2 sm:hidden">
+        <form action={createJournalEntry} className="fixed bottom-6 right-6">
+          <Button size={"icon"} className="h-16 w-16 rounded-full">
+            <PenBoxIcon className="h-6 w-6" />
           </Button>
         </form>
         <JournalEntryList journalEntries={journalEntries} />
       </main>
-      <main className="container hidden flex-col space-y-4 py-8 md:flex">
+      <main className="container hidden flex-col space-y-4 py-8 sm:flex">
         <div className="flex flex-col items-start">
           <h1 className="text-3xl font-bold">Writing Stats</h1>
           <p className="text-xs text-muted-foreground">Let's see how you're doing!</p>

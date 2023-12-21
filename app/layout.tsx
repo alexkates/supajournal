@@ -1,10 +1,10 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "@/components/footer";
+import Header from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -57,9 +57,9 @@ interface RootLayoutProps {
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} flex h-screen flex-col gap-12`}>
+      <body className={`${inter.className} flex h-screen w-full flex-col items-center md:gap-12`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
+          <Header />
           <main className="container mx-auto px-4">{children}</main>
           <Footer />
         </ThemeProvider>

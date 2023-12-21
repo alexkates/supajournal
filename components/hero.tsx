@@ -12,7 +12,7 @@ export default function Hero() {
         <h2 className="text-xl font-light">Reflect, write, and grow with Supajournal</h2>
       </div>
       <HeroCTAs />
-      <video className="max-w-4xl rounded-md shadow-2xl" autoPlay loop muted playsInline>
+      <video className="rounded-md shadow-2xl" autoPlay loop muted playsInline>
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
     </section>

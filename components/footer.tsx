@@ -1,17 +1,21 @@
+import Link from "next/link";
 import React from "react";
 
 export default function Footer() {
   return (
-    <div>
-      {" "}
+    <footer className="hidden py-4 text-xs text-muted-foreground sm:flex">
       Powered by{" "}
-      <a href="https://supabase.io" target="_blank" rel="noopener noreferrer" className="text-gradient text-primary underline">
+      <Link href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="underline">
+        Vercel
+      </Link>
+      ,{" "}
+      <Link href="https://supabase.io" target="_blank" rel="noopener noreferrer" className="underline">
         Supabase
-      </a>{" "}
-      and{" "}
-      <a href="https://openai.com" target="_blank" rel="noopener noreferrer" className="text-primary underline">
+      </Link>
+      , and{" "}
+      <Link href="https://openai.com" target="_blank" rel="noopener noreferrer" className="underline">
         OpenAI
-      </a>
-    </div>
+      </Link>
+    </footer>
   );
 }
