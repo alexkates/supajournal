@@ -1,5 +1,5 @@
 export default function calculateWordCountStats(
-  data: { wordCount: number; createdAt: string; mostPopularWord: string; mostPopularWordCount: number }[]
+  data: { wordCount: number; createdAt: string; mostPopularWord: string; mostPopularWordCount: number }[],
 ) {
   const totalWordCount = data.reduce((acc, { wordCount }) => acc + wordCount, 0);
   const wordCountLastMonth = data
@@ -26,13 +26,16 @@ export default function calculateWordCountStats(
   const wordCountDifferenceSinceLastMonth = wordCountThisMonth - wordCountLastMonth;
   const wordCountSymbol = wordCountDifferenceSinceLastMonth > 0 ? "+" : wordCountDifferenceSinceLastMonth < 0 ? "-" : "";
 
-  const allWordsGroupedByOccurence = data.reduce((acc, { mostPopularWord, mostPopularWordCount }) => {
-    if (!acc[mostPopularWord]) {
-      acc[mostPopularWord] = 0;
-    }
-    acc[mostPopularWord] += mostPopularWordCount;
-    return acc;
-  }, {} as Record<string, number>);
+  const allWordsGroupedByOccurence = data.reduce(
+    (acc, { mostPopularWord, mostPopularWordCount }) => {
+      if (!acc[mostPopularWord]) {
+        acc[mostPopularWord] = 0;
+      }
+      acc[mostPopularWord] += mostPopularWordCount;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
 
   const [mostPopularWord, mostPopularWordCount] = Object.entries(allWordsGroupedByOccurence).reduce(
     ([accWord, accCount], [word, count]) => {
@@ -41,7 +44,7 @@ export default function calculateWordCountStats(
       }
       return [accWord, accCount];
     },
-    ["", 0]
+    ["", 0],
   );
 
   return { totalWordCount, wordCountSymbol, wordCountDifferenceSinceLastMonth, mostPopularWord, mostPopularWordCount };

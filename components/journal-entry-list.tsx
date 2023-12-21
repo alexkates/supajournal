@@ -22,7 +22,7 @@ export default function JournalEntryList({ journalEntries }: Props) {
           <li key={journalEntry.id}>
             <Button asChild variant={buttonVariant} className="w-full justify-start">
               <Link href={`/journal/${journalEntry.id}`}>
-                <span className="md:text-xs text-md">{journalName}</span>
+                <span className="text-md md:text-xs">{journalName}</span>
               </Link>
             </Button>
           </li>

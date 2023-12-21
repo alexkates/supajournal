@@ -5,11 +5,11 @@ export default function Footer() {
     <div>
       {" "}
       Powered by{" "}
-      <a href="https://supabase.io" target="_blank" rel="noopener noreferrer" className="text-gradient underline text-primary">
+      <a href="https://supabase.io" target="_blank" rel="noopener noreferrer" className="text-gradient text-primary underline">
         Supabase
       </a>{" "}
       and{" "}
-      <a href="https://openai.com" target="_blank" rel="noopener noreferrer" className="underline text-primary">
+      <a href="https://openai.com" target="_blank" rel="noopener noreferrer" className="text-primary underline">
         OpenAI
       </a>
     </div>

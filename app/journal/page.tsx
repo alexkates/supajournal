@@ -30,21 +30,21 @@ export default async function Page() {
 
   return (
     <>
-      <main className="flex md:hidden flex-col items-center p-2 w-full space-y-8">
+      <main className="flex w-full flex-col items-center space-y-8 p-2 md:hidden">
         <form action={createJournalEntry} className="flex">
           <Button variant={"default"}>
-            <PenBoxIcon className="w-4 h-4 mr-2" />
+            <PenBoxIcon className="mr-2 h-4 w-4" />
             Create Journal Entry
           </Button>
         </form>
         <JournalEntryList journalEntries={journalEntries} />
       </main>
-      <main className="hidden md:flex flex-col container py-8 space-y-4">
+      <main className="container hidden flex-col space-y-4 py-8 md:flex">
         <div className="flex flex-col items-start">
           <h1 className="text-3xl font-bold">Writing Stats</h1>
           <p className="text-xs text-muted-foreground">Let's see how you're doing!</p>
         </div>
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Journal Entries</CardTitle>

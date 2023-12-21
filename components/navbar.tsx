@@ -31,7 +31,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="flex items-center justify-between container p-4 z-10">
+    <nav className="container z-10 flex items-center justify-between p-4">
       <Button asChild variant={"ghost"} size={"lg"}>
         <Link href="/journal" className="text-xl">
           Supa<span className="text-primary">journal</span>

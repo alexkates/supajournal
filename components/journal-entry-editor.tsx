@@ -22,7 +22,7 @@ export default function JournalEntryEditor({ journalEntry }: Props) {
 
   return (
     <Editor
-      className="w-full h-full"
+      className="h-full w-full"
       defaultValue={journalEntry.content as JSONContent}
       disableLocalStorage
       completionApi="/api/completion"
