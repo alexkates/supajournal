@@ -22,7 +22,7 @@ export default function JournalEntryEditor({ journalEntry }: Props) {
 
   return (
     <Editor
-      className="h-full w-full"
+      className="" // Not sure why, but if I don't add this, the editor color scheme is broken
       defaultValue={journalEntry.content as JSONContent}
       disableLocalStorage
       completionApi="/api/completion"

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.ProseMirror {
+  @apply p-3 !important;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

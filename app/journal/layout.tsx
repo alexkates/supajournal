@@ -24,21 +24,19 @@ export default async function JournalLayout({ children }: Props) {
 
   return (
     <div className="flex">
-      <aside id="sidebar" className="hidden w-auto px-2 py-8 sm:flex" aria-label="Sidebar">
-        <div className="flex flex-col overflow-y-auto overflow-x-hidden">
-          <div className="flex w-full flex-col space-y-8">
-            <form action={createJournalEntry} className="flex">
-              <Button variant={"default"}>
-                <PenBoxIcon className="mr-2 h-4 w-4" />
-                Create Journal Entry
-              </Button>
-            </form>
-            <JournalEntryList journalEntries={journalEntries} />
-          </div>
+      <aside id="sidebar" className="hidden px-2 py-8 sm:flex" aria-label="Sidebar">
+        <div className="flex flex-col space-y-8">
+          <form action={createJournalEntry} className="flex">
+            <Button variant={"default"}>
+              <PenBoxIcon className="mr-2 h-4 w-4" />
+              Create Journal Entry
+            </Button>
+          </form>
+          <JournalEntryList journalEntries={journalEntries} />
         </div>
       </aside>
 
-      <div className="w-full overflow-y-auto">{children}</div>
+      <div>{children}</div>
     </div>
   );
 }

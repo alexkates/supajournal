@@ -21,7 +21,7 @@ export default async function Page() {
 
   if (!journalEntries) return null;
 
-  const { totalJournalEntries, jouralEntriesSymbol, journalEntriesDifferenceSinceLastMonth } = calculateJournalEntriesStats(journalEntries);
+  const { totalJournalEntries, journalEntriesSymbol, journalEntriesDifferenceSinceLastMonth } = calculateJournalEntriesStats(journalEntries);
   const { totalWordCount, wordCountSymbol, wordCountDifferenceSinceLastMonth, mostPopularWord, mostPopularWordCount } =
     calculateWordCountStats(journalEntries);
   const { wordsPerEntry, wordsPerJournalEntrySymbol, wordsPerEntryDifferenceSinceLastMonth } = calculateWordsPerJournalEntryStats(journalEntries);
@@ -51,7 +51,7 @@ export default async function Page() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{totalJournalEntries}</div>
-              <p className="text-xs text-muted-foreground">{`${jouralEntriesSymbol}${journalEntriesDifferenceSinceLastMonth} from last month`}</p>
+              <p className="text-xs text-muted-foreground">{`${journalEntriesSymbol}${journalEntriesDifferenceSinceLastMonth} from last month`}</p>
             </CardContent>
           </Card>
           <Card>

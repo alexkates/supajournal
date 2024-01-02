@@ -46,7 +46,7 @@ Return only a JSON object in the following format. The JSON needs to be properly
     data: { user },
   } = await supabase.auth.getUser();
 
-  const name = prompt.title;
+  const name = `${new Date().toLocaleDateString()} - ${prompt.title}`;
   const userId = user?.id!;
 
   const content: JSONContent = {
