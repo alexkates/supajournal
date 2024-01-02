@@ -18,6 +18,6 @@ export default function calculateJournalEntriesStats(data: { wordCount: number; 
   }).length;
 
   const journalEntriesDifferenceSinceLastMonth = journalEntriesThisMonth - journalEntriesLastMonth;
-  const jouralEntriesSymbol = journalEntriesDifferenceSinceLastMonth > 0 ? "+" : journalEntriesDifferenceSinceLastMonth < 0 ? "-" : "";
+  const jouralEntriesSymbol = journalEntriesDifferenceSinceLastMonth > 0 ? "+" : "";
   return { totalJournalEntries, jouralEntriesSymbol, journalEntriesDifferenceSinceLastMonth };
 }

@@ -24,7 +24,7 @@ export default function calculateWordCountStats(
     .reduce((acc, { wordCount }) => acc + wordCount, 0);
 
   const wordCountDifferenceSinceLastMonth = wordCountThisMonth - wordCountLastMonth;
-  const wordCountSymbol = wordCountDifferenceSinceLastMonth > 0 ? "+" : wordCountDifferenceSinceLastMonth < 0 ? "-" : "";
+  const wordCountSymbol = wordCountDifferenceSinceLastMonth > 0 ? "+" : "";
 
   const allWordsGroupedByOccurence = data.reduce(
     (acc, { mostPopularWord, mostPopularWordCount }) => {

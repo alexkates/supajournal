@@ -29,7 +29,7 @@ export default function calculateWordsPerJournalEntryStats(data: { wordCount: nu
 
   const wordsPerEntryDifferenceSinceLastMonth = Math.round(averageWordsPerJournalEntryThisMonth - wordsPerEntryLastMonth);
 
-  const wordsPerJournalEntrySymbol = wordsPerEntryDifferenceSinceLastMonth > 0 ? "+" : wordsPerEntryDifferenceSinceLastMonth < 0 ? "-" : "";
+  const wordsPerJournalEntrySymbol = wordsPerEntryDifferenceSinceLastMonth > 0 ? "+" : "";
 
   return {
     wordsPerEntry,
