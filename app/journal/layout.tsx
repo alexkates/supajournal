@@ -24,7 +24,7 @@ export default async function JournalLayout({ children }: Props) {
 
   return (
     <div className="flex">
-      <aside id="sidebar" className="hidden px-2 py-8 sm:flex" aria-label="Sidebar">
+      <aside id="sidebar" className="hidden px-2 sm:flex" aria-label="Sidebar">
         <div className="flex flex-col space-y-8">
           <form action={createJournalEntry} className="flex">
             <Button variant={"default"}>

@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "prettier . --write && next lint"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
